@@ -6,6 +6,8 @@
             ToDo list Table : user_id, priority, task, create date, deadline, is_deleted
     
     -   설계한 Table을 바탕으로 한 CRUD method 작성
+
+    -   [참고](https://dbdiagram.io/d/60864b16b29a09603d12172e)
             
 -   ## query
     -   
