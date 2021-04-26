@@ -1,7 +1,11 @@
 # Back-End
 -   ## DB Structure
-    -   user table, foreign key를 활용한 ToDo List table
--   ## request
-    -   user 정보, ToDo List 정보 api
+    -   user, ToDo List table 설계
+
+            User Table : id, password, name, email, phone, birth, enroll_date
+            ToDo list Table : user_id, priority, task, create date, deadline, is_deleted
+    
+    -   설계한 Table을 바탕으로 한 CRUD method 작성
+            
 -   ## query
-    -   user 정보, ToDo List 정보 DB에 insert
+    -   
