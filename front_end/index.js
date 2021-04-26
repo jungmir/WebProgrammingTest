@@ -68,25 +68,49 @@ function arrangePriority() {
 
 function moveItem(direction) {
     var taskList = document.getElementsByName('items[]');
-    if (direction == -1) {
+    var tableBody = document.getElementById('taskList');
+    var control = document.getElementById('selectAll');
+    var nonMoveItems = new Array();
+    var resultItemList = new Array(taskList.length);
+
+    if (direction === -1) {
         taskList = [].slice.call(document.getElementsByName('items[]'), 0).reverse();
     }
+
     taskList.forEach((item, index) => {
         var checkBox = item.getElementsByClassName('select');
         if (checkBox[0].checked) {
-            if (index > 0) {
-                var source = taskList[index - 1].getElementsByTagName('th')[2];
-                var target = item.getElementsByTagName('th')[2];
-                swapName(source, target);
+            if (!resultItemList[index - 1] && index > 0) {
+                resultItemList[index - 1] = item.cloneNode(true);
+            } else {
+                resultItemList[index] = item.cloneNode(true);
             }
         }
-        checkBox[0].checked = false;
+        else {
+            nonMoveItems.push(item.cloneNode(true));
+        }
     })
-    arrangePriority();
-}
+    
+    nonMoveItems.forEach((item, index) => {
+        if (resultItemList[index] != undefined) {
+            while (resultItemList[index] != undefined) {
+                index = index + 1;
+            }
+        }
+        resultItemList[index] = item.cloneNode(true);
+    })
 
-function swapName(source, target) {
-    var temp = source.innerHTML;
-    source.innerHTML = target.innerHTML;
-    target.innerHTML = temp;
+    if (direction === -1) {
+        resultItemList = resultItemList.reverse();
+    }
+
+    tableBody.querySelectorAll('*').forEach((item, index) => {item.remove()});
+
+    resultItemList.forEach((item, index) => {
+        tableBody.appendChild(item);
+    });
+
+    control.checked = false;
+    allCheck();
+    arrangePriority();
 }
