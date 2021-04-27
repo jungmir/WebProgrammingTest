@@ -3,5 +3,3 @@
     -   ToDo List
 -   ## dom control
     -   ToDo List Priority Change
--   ## fetch
-    -   ToDo List Fetch

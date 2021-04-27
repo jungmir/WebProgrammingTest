@@ -1,10 +1,10 @@
 import mysql.connector
 
 conn = mysql.connector.connect(
-    host = 'localhost',
-    user = 'root',
-    password = 'root',
-    database = 'devmyself',
+    host = '127.0.0.1',
+    user = 'mir',
+    password = 'wjdalfm1!',
+    database = 'db_test',
     charset = 'utf8'
 )
 
@@ -20,7 +20,7 @@ conn.commit()
 
 sql = 'CREATE TABLE IF NOT EXISTS todo ( id INTEGER PRIMARY KEY AUTO_INCREMENT, user_id VARCHAR(20) NOT NULL, \
         priority INTEGER NOT NULL, task VARCHAR(20) NOT NULL, create_date DATETIME DEFAULT CURRENT_TIMESTAMP, \
-        deadline DATETIME NOT NULL, is_deleted TINYINT DEFAULT 0)'
+        deadline DATETIME NOT NULL, is_done TINYINT DEFAULT 0)'
         
 curs.execute(sql)
 conn.commit()
