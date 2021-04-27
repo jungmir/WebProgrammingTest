@@ -1,4 +1,5 @@
 venv
 .venv
 .sh
-backup
+**/index.js
+**/answer.py
